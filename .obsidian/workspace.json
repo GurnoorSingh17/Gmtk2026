@@ -4,21 +4,28 @@
     "type": "split",
     "children": [
       {
-        "id": "e4ad3455c17d4530",
+        "id": "1755f5e482d11d3e",
         "type": "tabs",
         "children": [
           {
-            "id": "3e94996696fb00d5",
+            "id": "29199b8797c34648",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "kanban",
               "state": {
-                "file": "README.md",
-                "mode": "source",
-                "source": false
+                "file": "Notes/Day 1.md",
+                "kanbanViewState": {
+                  "kanban-plugin": "board",
+                  "list-collapse": [
+                    false,
+                    false,
+                    false,
+                    false
+                  ]
+                }
               },
-              "icon": "lucide-file",
-              "title": "README"
+              "icon": "lucide-trello",
+              "title": "Day 1"
             }
           }
         ]
@@ -94,7 +101,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "Notes/Day 1.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +111,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for README"
+              "title": "Backlinks for Day 1"
             }
           },
           {
@@ -113,12 +120,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "Notes/Day 1.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from README"
+              "title": "Outgoing links from Day 1"
             }
           },
           {
@@ -156,13 +163,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md",
+                "file": "Notes/Day 1.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of README"
+              "title": "Outline of Day 1"
             }
           },
           {
@@ -196,8 +203,13 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "3e94996696fb00d5",
+  "active": "29199b8797c34648",
   "lastOpenFiles": [
+    "Basic Combat System.md",
+    "Test Enemy.md",
+    "Notes/Day 1.md",
+    "Movement.md",
+    "Game/icon.svg",
     "README.md"
   ]
 }
