@@ -6,7 +6,6 @@ kanban-plugin: board
 
 ## p1
 
-- [ ] [[Movement]]
 - [ ] [[Basic Combat System]]
 - [ ] [[Test Enemy]]
 
@@ -21,6 +20,7 @@ kanban-plugin: board
 
 ## Done
 
+- [ ] [[Movement]]
 
 
 
