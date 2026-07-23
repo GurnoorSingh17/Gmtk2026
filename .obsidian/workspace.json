@@ -11,21 +11,14 @@
             "id": "b2330bc8a14cd44f",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "markdown",
               "state": {
-                "file": "Notes/Base.md",
-                "kanbanViewState": {
-                  "kanban-plugin": "board",
-                  "list-collapse": [
-                    false,
-                    false,
-                    false,
-                    false
-                  ]
-                }
+                "file": "Notes/Basic Combat System.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-trello",
-              "title": "Base"
+              "icon": "lucide-file",
+              "title": "Basic Combat System"
             }
           }
         ]
@@ -187,7 +180,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -203,25 +197,26 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "db54d357f5efe10d",
+  "active": "b2330bc8a14cd44f",
   "lastOpenFiles": [
-    "Game/Scenes/player.tscn-4AIlMQ",
-    "Game/Scenes/player.tscn-OxXLWV",
-    "Game/Scenes/player.tscn-r573TF",
-    "Game/Scenes/player.tscn-XeJfGW",
-    "Game/Scenes/player.tscn-mnd53C",
-    "Game/Scenes/player.tscn-tedOGH",
-    "Game/Scenes/player.tscn-3ImJsE",
-    "Game/Scenes/player.tscn-Ug3Ges",
-    "Game/Scenes/player.tscn-pK1fhB",
-    "Game/Scenes/player.tscn-TWRAtW",
-    "Game/Scenes/player.tscn-ietmGU",
+    "Game/Scenes/player.tscn-ANROSA",
+    "Game/Scenes/player.tscn-RPlKln",
+    "Game/Scenes/player.tscn-xGvIKv",
+    "Game/Scenes/player.tscn-vQtmMI",
+    "Game/Scripts/player.gd~",
+    "Game/Scenes/player.tscn-7n0Dq4",
+    "Game/Scenes/player.tscn-xnLL6r",
+    "Game/Scenes/player.tscn-aijxPi",
+    "Notes/Base.md",
+    "Notes/Basic Combat System.md",
+    "Game/Scenes/player.tscn-MDaWNj",
+    "Game/Scenes/player.tscn-oE93x3",
+    "Game/Scenes/player.tscn-fnCbw0",
+    "Game/Imports/UI/Crosshair.png",
+    "Notes/Movement.md",
     "Game/Imports/UI/Heart.png",
     "Game/Imports/UI/mana bottle.png",
     "Notes/Test Enemy.md",
-    "Notes/Base.md",
-    "Notes/Basic Combat System.md",
-    "Notes/Movement.md",
     "README.md",
     "Game/icon.svg"
   ]

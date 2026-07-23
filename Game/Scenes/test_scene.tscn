@@ -31,3 +31,4 @@ size = Vector3(20, 1, 20)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3395948, 0)
 MoveSpeed = 7.0
 JumpVelocity = 5.5
+MouseSensY = 10.0

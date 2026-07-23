@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ucncn7e3sfiw" path="res://Scripts/player.gd" id="1_v0iea"]
 [ext_resource type="Texture2D" uid="uid://ca2wpmfsqnsi4" path="res://Imports/UI/Heart.png" id="2_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://cnh6s73ysqbux" path="res://Imports/UI/mana bottle.png" id="2_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://dl0qikxhdjm87" path="res://Imports/UI/Crosshair.png" id="4_vgqql"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_gpseo"]
 radius = 0.3
@@ -55,15 +56,25 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 5
 anti_aliasing = false
 
-[node name="Player" type="CharacterBody3D" unique_id=1583812389 node_paths=PackedStringArray("PlayerCam")]
+[node name="Player" type="CharacterBody3D" unique_id=1583812389 node_paths=PackedStringArray("PlayerCam", "ManaBar", "HealthBar")]
 script = ExtResource("1_v0iea")
 PlayerCam = NodePath("Camera3D")
+ManaBar = NodePath("UI/PlayerUI/BarContainer/ManaBar/ManaProgressBar")
+SecondaryCooldown = 1.0
+SecondaryDamage = 50
+PrimaryReleaseCooldown = 15.0
+PrimaryReleaseDamage = 150
+SecondaryReleaseCooldown = 30.0
+SecondaryReleaseDamage = 200
+HealthBar = NodePath("UI/PlayerUI/BarContainer/HeartBar/HeartProgressBar")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=124289789]
 shape = SubResource("CylinderShape3D_gpseo")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1626135417]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+
+[node name="Node" type="Node" parent="Camera3D" unique_id=641378265]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=184877433]
 mesh = SubResource("CylinderMesh_gpseo")
@@ -75,17 +86,12 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -12.0
-offset_top = 6.0
-offset_right = -12.0
-offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="BarContainer" type="VBoxContainer" parent="UI/PlayerUI" unique_id=2057848489]
-layout_mode = 0
-offset_left = 13.0
-offset_right = 45.0
+layout_mode = 1
+offset_right = 32.0
 offset_bottom = 65.0
 scale = Vector2(2, 2)
 theme_override_constants/separation = 1
@@ -134,3 +140,16 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_6t5aa")
 step = 1.0
 value = 100.0
 show_percentage = false
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/PlayerUI" unique_id=1767548312]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/PlayerUI/CenterContainer" unique_id=598993008]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("4_vgqql")
