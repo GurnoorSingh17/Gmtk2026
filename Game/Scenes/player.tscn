@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://demcgqsqh7jh1"]
 
 [ext_resource type="Script" uid="uid://ucncn7e3sfiw" path="res://Scripts/player.gd" id="1_v0iea"]
+[ext_resource type="Texture2D" uid="uid://ca2wpmfsqnsi4" path="res://Imports/UI/Heart.png" id="2_6t5aa"]
+[ext_resource type="Texture2D" uid="uid://cnh6s73ysqbux" path="res://Imports/UI/mana bottle.png" id="2_cvnsp"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_gpseo"]
 radius = 0.3
@@ -12,6 +14,46 @@ albedo_color = Color(0.8, 0, 0.16862746, 1)
 material = SubResource("StandardMaterial3D_cdgqv")
 top_radius = 0.3
 bottom_radius = 0.3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cvnsp"]
+bg_color = Color(0, 0, 0, 0.42352942)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 5
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vgqql"]
+bg_color = Color(0.7176471, 0.30588236, 0.30588236, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 5
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6t5aa"]
+bg_color = Color(0.54901963, 0.7254902, 0.8156863, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 5
+anti_aliasing = false
 
 [node name="Player" type="CharacterBody3D" unique_id=1583812389 node_paths=PackedStringArray("PlayerCam")]
 script = ExtResource("1_v0iea")
@@ -25,3 +67,70 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=184877433]
 mesh = SubResource("CylinderMesh_gpseo")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1851636123]
+
+[node name="PlayerUI" type="Control" parent="UI" unique_id=1490336239]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = 6.0
+offset_right = -12.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BarContainer" type="VBoxContainer" parent="UI/PlayerUI" unique_id=2057848489]
+layout_mode = 0
+offset_left = 13.0
+offset_right = 45.0
+offset_bottom = 65.0
+scale = Vector2(2, 2)
+theme_override_constants/separation = 1
+alignment = 1
+
+[node name="HeartBar" type="TextureRect" parent="UI/PlayerUI/BarContainer" unique_id=2130265414]
+z_as_relative = false
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_6t5aa")
+
+[node name="HeartProgressBar" type="ProgressBar" parent="UI/PlayerUI/BarContainer/HeartBar" unique_id=699729378]
+z_index = -1
+z_as_relative = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 19.5
+offset_top = 10.0
+offset_right = 137.5
+offset_bottom = 37.0
+scale = Vector2(1, 0.6999998)
+theme_override_styles/background = SubResource("StyleBoxFlat_cvnsp")
+theme_override_styles/fill = SubResource("StyleBoxFlat_vgqql")
+step = 1.0
+value = 100.0
+show_percentage = false
+
+[node name="ManaBar" type="TextureRect" parent="UI/PlayerUI/BarContainer" unique_id=1806666626]
+z_as_relative = false
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_cvnsp")
+
+[node name="ManaProgressBar" type="ProgressBar" parent="UI/PlayerUI/BarContainer/ManaBar" unique_id=358930927]
+z_index = -1
+z_as_relative = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 19.5
+offset_top = 10.0
+offset_right = 137.5
+offset_bottom = 37.0
+scale = Vector2(1, 0.6999998)
+theme_override_styles/background = SubResource("StyleBoxFlat_cvnsp")
+theme_override_styles/fill = SubResource("StyleBoxFlat_6t5aa")
+step = 1.0
+value = 100.0
+show_percentage = false
