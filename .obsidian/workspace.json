@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "1755f5e482d11d3e",
+        "id": "5e53fb8a1a75e888",
         "type": "tabs",
         "children": [
           {
-            "id": "29199b8797c34648",
+            "id": "b2330bc8a14cd44f",
             "type": "leaf",
             "state": {
               "type": "kanban",
               "state": {
-                "file": "Notes/Day 1.md",
+                "file": "Notes/Base.md",
                 "kanbanViewState": {
                   "kanban-plugin": "board",
                   "list-collapse": [
@@ -25,7 +25,7 @@
                 }
               },
               "icon": "lucide-trello",
-              "title": "Day 1"
+              "title": "Base"
             }
           }
         ]
@@ -203,8 +203,13 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "db54d357f5efe10d",
+  "active": "b2330bc8a14cd44f",
   "lastOpenFiles": [
+    "Notes/Test Enemy.md",
+    "Notes/Base.md",
+    "Notes/Basic Combat System.md",
+    "Notes/Movement.md",
+    "README.md",
     "Game/Scenes/test_scene.tscn-czRm6K",
     "Game/Scenes/test_scene.tscn-kv5G6z",
     "Game/project.godot-5az9MW",
@@ -215,12 +220,6 @@
     "Game/Scenes/test_scene.tscn-qIS9eX",
     "Game/Scenes/test_scene.tscn-V8vC9k",
     "Game/Scenes/test_scene.tscn-4sHHy2",
-    "Game/project.godot-kflkfe",
-    "Basic Combat System.md",
-    "Test Enemy.md",
-    "Notes/Day 1.md",
-    "Movement.md",
-    "Game/icon.svg",
-    "README.md"
+    "Game/icon.svg"
   ]
 }

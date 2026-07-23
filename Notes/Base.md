@@ -6,12 +6,12 @@ kanban-plugin: board
 
 ## p1
 
-- [ ] [[Basic Combat System]]
 - [ ] [[Test Enemy]]
 
 
 ## In work
 
+- [ ] [[Basic Combat System]]
 
 
 ## Testing
