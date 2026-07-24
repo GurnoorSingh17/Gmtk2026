@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ucncn7e3sfiw" path="res://Scripts/player.gd" id="1_v0iea"]
 [ext_resource type="Texture2D" uid="uid://ca2wpmfsqnsi4" path="res://Imports/UI/Heart.png" id="2_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://cnh6s73ysqbux" path="res://Imports/UI/mana bottle.png" id="2_cvnsp"]
+[ext_resource type="PackedScene" uid="uid://bm6p3o617nh8t" path="res://Scenes/attack_0.tscn" id="2_fkybt"]
 [ext_resource type="Texture2D" uid="uid://dl0qikxhdjm87" path="res://Imports/UI/Crosshair.png" id="4_vgqql"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_gpseo"]
@@ -56,10 +57,11 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 5
 anti_aliasing = false
 
-[node name="Player" type="CharacterBody3D" unique_id=1583812389 node_paths=PackedStringArray("PlayerCam", "ManaBar", "HealthBar")]
+[node name="Player" type="CharacterBody3D" unique_id=1583812389 node_paths=PackedStringArray("PlayerCam", "ManaBar", "HealthBar") groups=["Player"]]
 script = ExtResource("1_v0iea")
 PlayerCam = NodePath("Camera3D")
 ManaBar = NodePath("UI/PlayerUI/BarContainer/ManaBar/ManaProgressBar")
+PrimaryProjectile = ExtResource("2_fkybt")
 SecondaryCooldown = 1.0
 SecondaryDamage = 50
 PrimaryReleaseCooldown = 15.0
@@ -91,8 +93,10 @@ grow_vertical = 2
 
 [node name="BarContainer" type="VBoxContainer" parent="UI/PlayerUI" unique_id=2057848489]
 layout_mode = 1
-offset_right = 32.0
-offset_bottom = 65.0
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 35.0
+offset_bottom = 67.0
 scale = Vector2(2, 2)
 theme_override_constants/separation = 1
 alignment = 1

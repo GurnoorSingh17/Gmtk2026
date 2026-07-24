@@ -13,6 +13,7 @@ var Mana
 @export var ManaBar: ProgressBar
 @export var PrimaryCooldown:= 0.5
 @export var PrimaryDamage= 10
+@export var PrimaryProjectile : PackedScene
 @export var SecondaryCooldown:= 0.5
 @export var SecondaryDamage= 10
 @export var PrimaryReleaseCooldown:= 0.5
@@ -64,6 +65,7 @@ func CombatSystem():
 		if Input.is_action_pressed("LMB") && !IsAttacking:
 			IsAttacking = true
 			print("Attack 0 Start")
+			Attack0()
 			await get_tree().create_timer(PrimaryCooldown).timeout
 			print("Attack 0 End")
 			IsAttacking = false
@@ -85,3 +87,10 @@ func CombatSystem():
 			await get_tree().create_timer(SecondaryReleaseCooldown).timeout
 			print("Attack 3 End")
 			IsAttacking = false
+
+func Attack0():
+	var P = PrimaryProjectile.instantiate()
+	P.Dir = -PlayerCam.transform.basis.z 
+	P.Damage = PrimaryDamage
+	P.global_position = PlayerCam.global_position
+	get_tree().current_scene.add_child(P)
