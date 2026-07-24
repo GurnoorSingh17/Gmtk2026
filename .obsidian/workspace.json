@@ -85,7 +85,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 214.5
   },
   "right": {
     "id": "870e02933bdb2ace",
@@ -206,17 +206,17 @@
   },
   "active": "b2330bc8a14cd44f",
   "lastOpenFiles": [
-    "Game/Scenes/player.tscn-bmQ3Lx",
-    "Game/Scenes/player.tscn-ZRxXYi",
-    "Game/Scenes/test_scene.tscn-1KDJCO",
-    "Game/Scripts/attack_0.gd~",
-    "Game/Scenes/test_scene.tscn-e9VyTs",
-    "Game/Scenes/test_scene.tscn-kywM2A",
-    "Game/Scenes/test_scene.tscn-67CX88",
-    "Game/Scenes/test_scene.tscn-GCmoFs",
-    "Game/Scenes/test_scene.tscn-fog6tZ",
-    "Game/Scenes/test_scene.tscn-NtGimf",
-    "Game/Scenes/test_scene.tscn-ZYDtuP",
+    "Game/Scenes/player.tscn-s2s5fa",
+    "Game/Scenes/player.tscn-fszvzO",
+    "Game/Scenes/attack_2.tscn-ACFY75",
+    "Game/Scenes/attack_2.tscn-XXDUgW",
+    "Game/Scenes/attack_2.tscn-ExcHZT",
+    "Game/Scenes/attack_2.tscn-AkQ2Uj",
+    "Game/Scenes/attack_2.tscn-Tdxf16",
+    "Game/Scenes/attack_2_preview.tscn-4C91Ji",
+    "Game/Scenes/attack_2_preview.tscn-toVmhP",
+    "Game/Scenes/attack_2_preview.tscn-GkwSvf",
+    "Game/Scenes/attack_2.tscn-o1IELk",
     "Notes/Basic Combat System.md",
     "Notes/Base.md",
     "Game/Imports/UI/Crosshair.png",

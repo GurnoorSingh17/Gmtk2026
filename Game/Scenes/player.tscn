@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ca2wpmfsqnsi4" path="res://Imports/UI/Heart.png" id="2_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://cnh6s73ysqbux" path="res://Imports/UI/mana bottle.png" id="2_cvnsp"]
 [ext_resource type="PackedScene" uid="uid://bm6p3o617nh8t" path="res://Scenes/attack_0.tscn" id="2_fkybt"]
+[ext_resource type="PackedScene" uid="uid://sw48ji1iq1os" path="res://Scenes/attack_1.tscn" id="3_x3wgy"]
 [ext_resource type="Texture2D" uid="uid://dl0qikxhdjm87" path="res://Imports/UI/Crosshair.png" id="4_vgqql"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_gpseo"]
@@ -64,8 +65,7 @@ ManaBar = NodePath("UI/PlayerUI/BarContainer/ManaBar/ManaProgressBar")
 PrimaryProjectile = ExtResource("2_fkybt")
 SecondaryCooldown = 1.0
 SecondaryDamage = 50
-PrimaryReleaseCooldown = 15.0
-PrimaryReleaseDamage = 150
+SecondaryShield = ExtResource("3_x3wgy")
 SecondaryReleaseCooldown = 30.0
 SecondaryReleaseDamage = 200
 HealthBar = NodePath("UI/PlayerUI/BarContainer/HeartBar/HeartProgressBar")
@@ -76,7 +76,8 @@ shape = SubResource("CylinderShape3D_gpseo")
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1626135417]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 
-[node name="Node" type="Node" parent="Camera3D" unique_id=641378265]
+[node name="FireStunCast" type="RayCast3D" parent="Camera3D" unique_id=42415312]
+target_position = Vector3(0, 0, -10)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=184877433]
 mesh = SubResource("CylinderMesh_gpseo")

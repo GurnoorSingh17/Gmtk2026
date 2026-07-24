@@ -1,23 +1,25 @@
 [gd_scene format=3 uid="uid://bm6p3o617nh8t"]
 
 [ext_resource type="Script" uid="uid://b5ocsehplvwti" path="res://Scripts/attack_0.gd" id="1_pipxm"]
-[ext_resource type="Texture2D" uid="uid://ciuxyaoktugh5" path="res://icon.svg" id="1_pvfnl"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_gpseo"]
-radius = 0.84154654
+radius = 0.42664492
+
+[sub_resource type="SphereMesh" id="SphereMesh_gpseo"]
+radius = 0.3
+height = 0.6
 
 [node name="Attack0" type="RigidBody3D" unique_id=305357928]
 gravity_scale = 0.0
 script = ExtResource("1_pipxm")
-Speed = 1000
+Speed = 2000
 
 [node name="BodyFinder" type="Area3D" parent="." unique_id=1508448979]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BodyFinder" unique_id=1935273582]
 shape = SubResource("SphereShape3D_gpseo")
 
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=241109441]
-billboard = 1
-texture = ExtResource("1_pvfnl")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1822890736]
+mesh = SubResource("SphereMesh_gpseo")
 
 [connection signal="body_entered" from="BodyFinder" to="." method="_on_body_finder_body_entered"]

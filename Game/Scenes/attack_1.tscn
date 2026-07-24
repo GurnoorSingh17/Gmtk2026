@@ -1,0 +1,194 @@
+[gd_scene format=3 uid="uid://sw48ji1iq1os"]
+
+[ext_resource type="Script" uid="uid://el5gmc8sobq7" path="res://Scripts/attack_1.gd" id="1_7rxg3"]
+[ext_resource type="Texture2D" uid="uid://ciuxyaoktugh5" path="res://icon.svg" id="1_65ok7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7rxg3"]
+transparency = 1
+albedo_color = Color(0.8117647, 0.8039216, 0.3019608, 0.7921569)
+albedo_texture = ExtResource("1_65ok7")
+uv1_triplanar = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_gpseo"]
+material = SubResource("StandardMaterial3D_7rxg3")
+flip_faces = true
+top_radius = 2.0
+bottom_radius = 2.0
+height = 0.001
+cap_top = false
+cap_bottom = false
+
+[sub_resource type="Animation" id="Animation_65ok7"]
+resource_name = "Popin"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:height")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.001, 2.0]
+}
+
+[sub_resource type="Animation" id="Animation_h8e6g"]
+resource_name = "Popout"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:height")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 0.001]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.8333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_7rxg3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:mesh:height")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.001]
+}
+
+[sub_resource type="Animation" id="Animation_2abtk"]
+resource_name = "Spin"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.2831855, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:mesh:height")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 2.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h8e6g"]
+_data = {
+&"Popin": SubResource("Animation_65ok7"),
+&"Popout": SubResource("Animation_h8e6g"),
+&"RESET": SubResource("Animation_7rxg3"),
+&"Spin": SubResource("Animation_2abtk")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2abtk"]
+animation = &"Popin"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_h8e6g"]
+animation = &"Popout"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g8ksd"]
+animation = &"Spin"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uitcd"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_whkjn"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j6tws"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7rxg3"]
+xfade_time = 0.7
+advance_mode = 2
+advance_condition = &"Hitem"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_xhbj7"]
+states/Popin/node = SubResource("AnimationNodeAnimation_2abtk")
+states/Popin/position = Vector2(364.66666, 101.333336)
+states/Popout/node = SubResource("AnimationNodeAnimation_h8e6g")
+states/Popout/position = Vector2(764.6667, 136)
+states/Spin/node = SubResource("AnimationNodeAnimation_g8ksd")
+states/Spin/position = Vector2(495.33334, 80)
+states/Start/position = Vector2(214.66667, 100.740746)
+transitions = ["Start", "Popin", SubResource("AnimationNodeStateMachineTransition_uitcd"), "Popin", "Spin", SubResource("AnimationNodeStateMachineTransition_whkjn"), "Popout", "End", SubResource("AnimationNodeStateMachineTransition_j6tws"), "Spin", "Popout", SubResource("AnimationNodeStateMachineTransition_7rxg3")]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_gpseo"]
+height = 1.9990234
+radius = 2.0185547
+
+[node name="Attack1" type="Node3D" unique_id=1142030858 node_paths=PackedStringArray("Anim")]
+script = ExtResource("1_7rxg3")
+Anim = NodePath("AnimationTree")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1944127732]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.001868248, 0)
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_gpseo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=759544376]
+libraries/ = SubResource("AnimationLibrary_h8e6g")
+autoplay = &"Popin"
+playback_default_blend_time = 0.2
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=848422998]
+tree_root = SubResource("AnimationNodeStateMachine_xhbj7")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/Hitem = false
+
+[node name="Area3D" type="Area3D" parent="." unique_id=361672126]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=748699451]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00048828125, 0)
+shape = SubResource("CylinderShape3D_gpseo")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

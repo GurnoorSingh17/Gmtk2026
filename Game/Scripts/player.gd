@@ -11,13 +11,24 @@ extends CharacterBody3D
 @export var StartMana:= 1500
 var Mana
 @export var ManaBar: ProgressBar
+@export_category("Primart Attack(FireBall)")
 @export var PrimaryCooldown:= 0.5
 @export var PrimaryDamage= 10
 @export var PrimaryProjectile : PackedScene
+@export_category("Secondary Attack(Shields Up)")
 @export var SecondaryCooldown:= 0.5
 @export var SecondaryDamage= 10
+@export var SecondaryShield : PackedScene
+@export var SecondaryLength : float =10.0
+var IsShieldON : bool
+@export_category("Primary Release(Fire Stun)")
 @export var PrimaryReleaseCooldown:= 0.5
-@export var PrimaryReleaseDamage= 10
+@export var PrimaryReleaseRange :=1.0
+@export var PrimaryReleaseDuration := 5.0
+@export var PrimaryReleaseRepeatCooldown := 15.0
+@export var PrimaryReleaseCast : RayCast3D
+var CanFire:bool
+@export_category("Secondary Release(Fire Blast)")
 @export var SecondaryReleaseCooldown:= 0.5
 @export var SecondaryReleaseDamage= 10
 var IsAttacking: bool
@@ -64,23 +75,21 @@ func CombatSystem():
 	if !IsAttacking:
 		if Input.is_action_pressed("LMB") && !IsAttacking:
 			IsAttacking = true
-			print("Attack 0 Start")
 			Attack0()
 			await get_tree().create_timer(PrimaryCooldown).timeout
-			print("Attack 0 End")
+			
 			IsAttacking = false
-		if Input.is_action_pressed("RMB") && !IsAttacking:
+		if Input.is_action_pressed("RMB") && !IsAttacking && !IsShieldON:
 			IsAttacking = true
-			print("Attack 1 Start")
+			
 			await get_tree().create_timer(SecondaryCooldown).timeout
-			print("Attack 1 End")
+			Attack1()
+			
 			IsAttacking = false
-		if Input.is_action_pressed("EButton") && !IsAttacking:
+		if Input.is_action_pressed("EButton") && !IsAttacking and CanFire:
 			IsAttacking = true
-			print("Attack 2 Start")
+			Attack2()
 			await get_tree().create_timer(PrimaryReleaseCooldown).timeout
-			print("Attack 2 End")
-			IsAttacking = false
 		if Input.is_action_pressed("QButton") && !IsAttacking:
 			IsAttacking = true
 			print("Attack 3 Start")
@@ -90,7 +99,20 @@ func CombatSystem():
 
 func Attack0():
 	var P = PrimaryProjectile.instantiate()
-	P.Dir = -PlayerCam.transform.basis.z 
+	P.Dir = -PlayerCam.transform.basis.z
+	P.Dir = P.Dir.rotated(Vector3.UP,rotation.y)
 	P.Damage = PrimaryDamage
 	P.global_position = PlayerCam.global_position
 	get_tree().current_scene.add_child(P)
+
+func Attack1():
+	var S = SecondaryShield.instantiate()
+	S.Length = SecondaryLength
+	add_child(S)
+	IsShieldON = true
+	await get_tree().create_timer(SecondaryLength).timeout
+	IsShieldON = false
+
+func Attack2():
+	pass
+

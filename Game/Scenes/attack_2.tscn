@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://ced1p2nq24ydh"]
+
+[ext_resource type="Script" uid="uid://b3v4mdidrem2i" path="res://Scripts/attack_2.gd" id="1_cwdva"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_gpseo"]
+height = 1.5
+radius = 1.0
+
+[sub_resource type="Gradient" id="Gradient_ocxxn"]
+offsets = PackedFloat32Array(0, 0.529661, 1)
+colors = PackedColorArray(1, 1, 0, 1, 1, 0.50980395, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ujk78"]
+gradient = SubResource("Gradient_ocxxn")
+
+[sub_resource type="Curve" id="Curve_cwdva"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.9076953, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4sxxt"]
+curve = SubResource("Curve_cwdva")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gpseo"]
+emission_shape_scale = Vector3(1, 0.3, 1)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+gravity = Vector3(0, 9.8, 0)
+scale_min = 0.29999998
+scale_max = 0.59999996
+scale_curve = SubResource("CurveTexture_4sxxt")
+color = Color(1, 0.59607846, 0, 1)
+color_ramp = SubResource("GradientTexture1D_ujk78")
+hue_variation_min = -2.2351742e-08
+hue_variation_max = -2.2351742e-08
+sub_emitter_mode = 2
+sub_emitter_amount_at_end = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_enefc"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_l5uoo"]
+material = SubResource("StandardMaterial3D_enefc")
+size = Vector2(1, 1)
+orientation = 2
+
+[sub_resource type="Gradient" id="Gradient_ujk78"]
+offsets = PackedFloat32Array(0, 0.5635593, 1)
+colors = PackedColorArray(0.37036434, 0.37036452, 0.37036446, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yabxn"]
+gradient = SubResource("Gradient_ujk78")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ivtru"]
+initial_velocity_max = 1.0
+gravity = Vector3(0, 1, 0)
+scale_min = 0.099999994
+scale_max = 0.5
+color_ramp = SubResource("GradientTexture1D_yabxn")
+
+[node name="Attack2" type="Node3D" unique_id=1994786381 node_paths=PackedStringArray("FireParticles", "ParticleCollider")]
+script = ExtResource("1_cwdva")
+FireParticles = NodePath("GPUParticles3D")
+ParticleCollider = NodePath("Area3D/CollisionShape3D")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1520624739]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=777331529]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("CylinderShape3D_gpseo")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1753251454]
+amount = 50
+sub_emitter = NodePath("../GPUParticles3D2")
+lifetime = 0.7
+speed_scale = 0.7
+randomness = 1.0
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_gpseo")
+draw_pass_1 = SubResource("PlaneMesh_l5uoo")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="." unique_id=1031204475]
+amount = 50
+lifetime = 3.0
+randomness = 1.0
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_ivtru")
+draw_pass_1 = SubResource("PlaneMesh_l5uoo")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
