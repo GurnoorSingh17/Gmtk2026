@@ -27,7 +27,9 @@ var IsShieldON : bool
 @export var PrimaryReleaseDuration := 5.0
 @export var PrimaryReleaseRepeatCooldown := 15.0
 @export var PrimaryReleaseCast : RayCast3D
+@export var PrimaryReleasePreview : PackedScene
 var CanFire:bool
+var IsFiring : bool
 @export_category("Secondary Release(Fire Blast)")
 @export var SecondaryReleaseCooldown:= 0.5
 @export var SecondaryReleaseDamage= 10
@@ -45,6 +47,8 @@ func _input(event: InputEvent) -> void:
 		PlayerCam.rotation.x = clamp(PlayerCam.rotation.x, deg_to_rad(-60),deg_to_rad(60))
 
 func _ready() -> void:
+	IsAttacking = false
+	CanFire = true
 	Health = StartHealth
 	HealthBar.max_value = StartHealth
 	ManaBar.max_value = StartMana
@@ -77,25 +81,28 @@ func CombatSystem():
 			IsAttacking = true
 			Attack0()
 			await get_tree().create_timer(PrimaryCooldown).timeout
-			
 			IsAttacking = false
 		if Input.is_action_pressed("RMB") && !IsAttacking && !IsShieldON:
 			IsAttacking = true
-			
 			await get_tree().create_timer(SecondaryCooldown).timeout
 			Attack1()
-			
 			IsAttacking = false
-		if Input.is_action_pressed("EButton") && !IsAttacking and CanFire:
+		if Input.is_action_pressed("EButton")and !IsAttacking and CanFire:
 			IsAttacking = true
 			Attack2()
-			await get_tree().create_timer(PrimaryReleaseCooldown).timeout
+			CanFire = false
+			await get_tree().create_timer(PrimaryReleaseRepeatCooldown).timeout
+			CanFire = true
+			
+
 		if Input.is_action_pressed("QButton") && !IsAttacking:
 			IsAttacking = true
 			print("Attack 3 Start")
 			await get_tree().create_timer(SecondaryReleaseCooldown).timeout
 			print("Attack 3 End")
 			IsAttacking = false
+			
+
 
 func Attack0():
 	var P = PrimaryProjectile.instantiate()
@@ -114,5 +121,11 @@ func Attack1():
 	IsShieldON = false
 
 func Attack2():
-	pass
+	var Pre = PrimaryReleasePreview.instantiate()
+	Pre.Cast = PrimaryReleaseCast
+	Pre.FireRange = PrimaryReleaseRange
+	Pre.PriReDuration = PrimaryReleaseDuration
+	add_child(Pre)
+	
 
+			

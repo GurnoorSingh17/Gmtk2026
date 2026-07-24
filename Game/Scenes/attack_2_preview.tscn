@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cnvpusjogwdhv"]
 
-[ext_resource type="Script" uid="uid://ww16xk64j3ye" path="res://Scenes/attack_2_preview.gd" id="1_v681p"]
+[ext_resource type="Script" uid="uid://ww16xk64j3ye" path="res://Scripts/attack_2_preview.gd" id="1_v681p"]
+[ext_resource type="PackedScene" uid="uid://ced1p2nq24ydh" path="res://Scenes/attack_2.tscn" id="2_umc8d"]
 
 [sub_resource type="Gradient" id="Gradient_pqgyc"]
 offsets = PackedFloat32Array(0, 0.529661, 1)
@@ -49,6 +50,7 @@ orientation = 2
 
 [node name="Attack2Preview" type="Node3D" unique_id=416128140 node_paths=PackedStringArray("FireParticles")]
 script = ExtResource("1_v681p")
+PrimaryRelease = ExtResource("2_umc8d")
 FireParticles = NodePath("GPUParticles3D")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=191221809]

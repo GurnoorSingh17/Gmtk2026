@@ -8,6 +8,7 @@ func _ready() -> void:
 	var NewShape = CylinderShape3D.new()
 	NewShape.radius = FireRange
 	FireParticles.process_material.emission_ring_radius = FireRange
+	FireParticles.amount = 50 * FireRange
 	ParticleCollider.shape = NewShape
 	await get_tree().create_timer(Duration).timeout
 	queue_free()
