@@ -11,7 +11,7 @@ func _ready() -> void:
 	
 	if FireParticles and FireParticles.process_material:
 		FireParticles.process_material.emission_ring_radius = FireRange
-		FireParticles.amount = int(50 * FireRange) # Cast to int to prevent crash
+		FireParticles.amount = int(50 * FireRange) 
 		
 	if ParticleCollider:
 		ParticleCollider.shape = NewShape
@@ -22,10 +22,9 @@ func _ready() -> void:
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	if body.is_in_group("Enemy") && body.has_method("Damage"):
 		body.IsOnFire = false
-		body.Stun = false # Fixed: Reset stun when leaving the fire
+		# Removed body.Stun = false to fix discrepancy
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Enemy") && body.has_method("Damage"):
 		body.IsOnFire = true
-		body.Stun = true
-		
+		# Removed body.Stun = true to fix discrepancy		

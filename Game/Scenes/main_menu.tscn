@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://lroibhdnwi5o"]
+
+[ext_resource type="Texture2D" uid="uid://cb4d27pwon2yq" path="res://Imports/main menu.png" id="1_28flt"]
+[ext_resource type="Script" uid="uid://cndm17p4pw28b" path="res://Scripts/main_menu.gd" id="1_48xlc"]
+[ext_resource type="AudioStream" uid="uid://betm0ewoqfix3" path="res://Imports/sounds/main menu-Final Battle of the Dark Wizards.mp3" id="3_1ehe0"]
+
+[node name="MainMenu" type="Control" unique_id=1643503927]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_48xlc")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1301894800]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_28flt")
+
+[node name="StartButton" type="Button" parent="." unique_id=133710186]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 309.0
+offset_top = 222.0
+offset_right = 540.0
+offset_bottom = 291.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1559172592]
+stream = ExtResource("3_1ehe0")
+autoplay = true

@@ -1,25 +1,31 @@
 [gd_scene format=3 uid="uid://bm6p3o617nh8t"]
 
 [ext_resource type="Script" uid="uid://b5ocsehplvwti" path="res://Scripts/attack_0.gd" id="1_pipxm"]
+[ext_resource type="Texture2D" uid="uid://pt1lb5prgnsm" path="res://Imports/art/fireball.png" id="2_pipxm"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_gpseo"]
-radius = 0.42664492
-
-[sub_resource type="SphereMesh" id="SphereMesh_gpseo"]
-radius = 0.3
-height = 0.6
+[sub_resource type="SphereShape3D" id="SphereShape3D_cdgqv"]
+radius = 0.3346235
 
 [node name="Attack0" type="RigidBody3D" unique_id=305357928]
 gravity_scale = 0.0
 script = ExtResource("1_pipxm")
 Speed = 2000
 
-[node name="BodyFinder" type="Area3D" parent="." unique_id=1508448979]
+[node name="MeshInstance3D" type="Sprite3D" parent="." unique_id=1592215589]
+billboard = 1
+shaded = true
+texture_filter = 0
+texture = ExtResource("2_pipxm")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BodyFinder" unique_id=1935273582]
-shape = SubResource("SphereShape3D_gpseo")
+[node name="Area3D" type="Area3D" parent="." unique_id=1537653305]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1822890736]
-mesh = SubResource("SphereMesh_gpseo")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1286310886]
+shape = SubResource("SphereShape3D_cdgqv")
 
-[connection signal="body_entered" from="BodyFinder" to="." method="_on_body_finder_body_entered"]
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1911874112]
+light_color = Color(0.972549, 0.85882354, 0.61960787, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 11.23149
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

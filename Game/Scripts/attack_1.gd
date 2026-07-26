@@ -4,7 +4,6 @@ extends Node3D
 var Length: float
 
 func _ready() -> void:
-    # Safeguard timer to prevent crash if Length is less than 2.0
     var wait_time = max(0.1, Length - 2.0)
     await get_tree().create_timer(wait_time).timeout
     
@@ -13,5 +12,9 @@ func _ready() -> void:
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
     if body.is_in_group("EnemyProjectile"):
-        print("bye bye")
         body.queue_free()
+
+
+func _on_area_3d_area_entered(area: Area3D) -> void:
+    if area.get_parent().is_in_group("EnemyProjectile"):
+        area.queue_free()

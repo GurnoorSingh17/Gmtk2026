@@ -12,10 +12,9 @@ var PriReDuration
 func _ready() -> void:
     if FireParticles and FireParticles.process_material:
         FireParticles.process_material.emission_ring_radius = FireRange
-        FireParticles.amount = int(20 * FireRange) # Cast to int to prevent crash
+        FireParticles.amount = int(20 * FireRange)
 
 func _physics_process(_delta: float) -> void:
-    # Cancel aiming if RMB or Q is pressed
     if Input.is_action_just_pressed("RMB") or Input.is_action_just_pressed("QButton"):
         queue_free()
         return
@@ -24,13 +23,19 @@ func _physics_process(_delta: float) -> void:
         CollPoint = Cast.get_collision_point()
         CollNormal = Cast.get_collision_normal()
         
-        # Check if surface is flat (Normal pointing straight UP)
         if is_equal_approx(CollNormal.y, 1.0):
             visible = true
             global_position = CollPoint
             
-            # Use just_pressed so it doesn't trigger instantly if LMB was held down
             if Input.is_action_just_pressed("LMB"):
+                if get_parent().has_method("_on_release_fired"):
+                    get_parent()._on_release_fired()
+                
+                # --- PLAY SOUND ---
+                if get_parent().has_method("play_release_sound"):
+                    get_parent().play_release_sound(true)
+                # ------------------
+                
                 var PR = PrimaryRelease.instantiate()
                 PR.global_position = Cast.get_collision_point()
                 PR.FireRange = FireRange
@@ -38,9 +43,6 @@ func _physics_process(_delta: float) -> void:
                 get_tree().current_scene.add_child(PR)
                 queue_free()
         else:
-            # Pointing at a wall, hide the preview
             visible = false
     else:
-        # Pointing at the sky, hide the preview
         visible = false
-

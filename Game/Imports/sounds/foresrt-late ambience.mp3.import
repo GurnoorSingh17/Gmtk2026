@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bo4g8fqujqp4y"
+path="res://.godot/imported/foresrt-late ambience.mp3-04aae8b4a6b216d7903f55c06eff330d.mp3str"
+
+[deps]
+
+source_file="res://Imports/sounds/foresrt-late ambience.mp3"
+dest_files=["res://.godot/imported/foresrt-late ambience.mp3-04aae8b4a6b216d7903f55c06eff330d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

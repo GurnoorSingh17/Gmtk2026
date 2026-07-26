@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bj7wsuj55pxbt"
+path="res://.godot/imported/last 2 levels .mp3-d3bd254e3b922fd3deae894a82e62710.mp3str"
+
+[deps]
+
+source_file="res://Imports/sounds/last 2 levels .mp3"
+dest_files=["res://.godot/imported/last 2 levels .mp3-d3bd254e3b922fd3deae894a82e62710.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://ced1p2nq24ydh" path="res://Scenes/attack_2.tscn" id="2_umc8d"]
 
 [sub_resource type="Gradient" id="Gradient_pqgyc"]
-offsets = PackedFloat32Array(0, 0.529661, 1)
-colors = PackedColorArray(1, 1, 0, 1, 1, 0.50980395, 0, 1, 1, 0, 0, 1)
+offsets = PackedFloat32Array(0, 0.51086956, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.5, 0.5, 0.5, 1, 0.3, 0.3, 0.3, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_s4coj"]
 gradient = SubResource("Gradient_pqgyc")
@@ -29,7 +29,7 @@ gravity = Vector3(0, 9.8, 0)
 scale_min = 0.29999998
 scale_max = 0.59999996
 scale_curve = SubResource("CurveTexture_rmau8")
-color = Color(1, 0.59607846, 0, 0.4)
+color = Color(1, 1, 1, 0.4)
 color_ramp = SubResource("GradientTexture1D_s4coj")
 hue_variation_min = -2.2351742e-08
 hue_variation_max = -2.2351742e-08

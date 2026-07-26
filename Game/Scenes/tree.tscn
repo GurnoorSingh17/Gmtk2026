@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cewuqhtbg74ve"]
+
+[ext_resource type="Texture2D" uid="uid://bu6yotf0uspso" path="res://Imports/art/tree.png" id="1_0vwjc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gpseo"]
+size = Vector3(0.2642212, 2.4666748, 0.28179932)
+
+[node name="Tree" type="StaticBody3D" unique_id=856846289]
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1617145656]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2845826, 0)
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("1_0vwjc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1064372992]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007965088, 1.231216, 0.017425537)
+shape = SubResource("BoxShape3D_gpseo")

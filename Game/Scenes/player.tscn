@@ -1,12 +1,23 @@
 [gd_scene format=3 uid="uid://demcgqsqh7jh1"]
 
 [ext_resource type="Script" uid="uid://ucncn7e3sfiw" path="res://Scripts/player.gd" id="1_v0iea"]
-[ext_resource type="Texture2D" uid="uid://ca2wpmfsqnsi4" path="res://Imports/UI/Heart.png" id="2_6t5aa"]
-[ext_resource type="Texture2D" uid="uid://cnh6s73ysqbux" path="res://Imports/UI/mana bottle.png" id="2_cvnsp"]
 [ext_resource type="PackedScene" uid="uid://bm6p3o617nh8t" path="res://Scenes/attack_0.tscn" id="2_fkybt"]
 [ext_resource type="PackedScene" uid="uid://sw48ji1iq1os" path="res://Scenes/attack_1.tscn" id="3_x3wgy"]
 [ext_resource type="PackedScene" uid="uid://cnvpusjogwdhv" path="res://Scenes/attack_2_preview.tscn" id="4_8erm5"]
 [ext_resource type="Texture2D" uid="uid://dl0qikxhdjm87" path="res://Imports/UI/Crosshair.png" id="4_vgqql"]
+[ext_resource type="PackedScene" uid="uid://86mmms4aqtfe" path="res://Scenes/attack_3_preview.tscn" id="5_f1ek2"]
+[ext_resource type="PackedScene" uid="uid://tw0pfdyxa30t" path="res://Scenes/attack_3.tscn" id="6_tx1dd"]
+[ext_resource type="Texture2D" uid="uid://c7psm7b1d3swi" path="res://Imports/art/level UI.png" id="8_8erm5"]
+[ext_resource type="Texture2D" uid="uid://c6mwwuynnvnfc" path="res://Imports/art/level UI1.png" id="9_tx1dd"]
+[ext_resource type="Texture2D" uid="uid://dhuaxlrlvmakf" path="res://Imports/art/level UI2.png" id="10_gymyn"]
+[ext_resource type="FontFile" uid="uid://d0np8tmpsk1d0" path="res://Imports/Canterbury.ttf" id="11_gymyn"]
+[ext_resource type="Texture2D" uid="uid://bp1tfpph57wjk" path="res://Imports/art/ui-fire.png" id="12_ukyrk"]
+[ext_resource type="Texture2D" uid="uid://bp4cndjg5lke7" path="res://Imports/art/explode ui.png" id="13_7dp3o"]
+[ext_resource type="Texture2D" uid="uid://o6ugv826fwds" path="res://Imports/art/wand.png" id="14_7dp3o"]
+[ext_resource type="AudioStream" uid="uid://cixliyj31rhm7" path="res://Imports/sounds/walk.mp3" id="15_igrcy"]
+[ext_resource type="AudioStream" uid="uid://dq6hjj4bvq42r" path="res://Imports/sounds/fireball-player.mp3" id="16_fs7ks"]
+[ext_resource type="AudioStream" uid="uid://cd5ugg1oly46y" path="res://Imports/sounds/burn.mp3" id="17_l6n3p"]
+[ext_resource type="AudioStream" uid="uid://c2x4dln4v2j70" path="res://Imports/sounds/explode.mp3" id="18_olqyp"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_gpseo"]
 radius = 0.3
@@ -19,69 +30,39 @@ material = SubResource("StandardMaterial3D_cdgqv")
 top_radius = 0.3
 bottom_radius = 0.3
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cvnsp"]
-bg_color = Color(0, 0, 0, 0.42352942)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0, 0, 0, 1)
-border_blend = true
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 5
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vgqql"]
-bg_color = Color(0.7176471, 0.30588236, 0.30588236, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0, 0, 0, 0)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 5
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6t5aa"]
-bg_color = Color(0.54901963, 0.7254902, 0.8156863, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0, 0, 0, 0)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 5
-anti_aliasing = false
-
-[node name="Player" type="CharacterBody3D" unique_id=1583812389 node_paths=PackedStringArray("PlayerCam", "ManaBar", "PrimaryReleaseCast", "HealthBar") groups=["Player"]]
+[node name="Player" type="CharacterBody3D" unique_id=1583812389 node_paths=PackedStringArray("LevelLabel", "PlayerCam", "WalkSound", "FireballSound", "PrimaryReleaseSound", "SecondaryReleaseSound", "ManaBar", "PrimaryReleaseCast", "PrimaryReleaseCooldownBar", "SecondaryCooldownBar", "HealthBar") groups=["Player"]]
 script = ExtResource("1_v0iea")
+LevelLabel = NodePath("UI/PlayerUI/level")
 PlayerCam = NodePath("Camera3D")
-ManaBar = NodePath("UI/PlayerUI/BarContainer/ManaBar/ManaProgressBar")
+WalkSound = NodePath("Walk")
+FireballSound = NodePath("Fireball")
+PrimaryReleaseSound = NodePath("Fire")
+SecondaryReleaseSound = NodePath("explosion")
+ManaBar = NodePath("UI/PlayerUI/ManaBar")
 PrimaryProjectile = ExtResource("2_fkybt")
 SecondaryShield = ExtResource("3_x3wgy")
 PrimaryReleaseRange = 3.0
 PrimaryReleaseCast = NodePath("Camera3D/FireStunCast")
 PrimaryReleasePreview = ExtResource("4_8erm5")
+PrimaryReleaseCooldownBar = NodePath("UI/PlayerUI/FireCoolDown")
 SecondaryReleaseCooldown = 30.0
 SecondaryReleaseDamage = 200
-HealthBar = NodePath("UI/PlayerUI/BarContainer/HeartBar/HeartProgressBar")
+SecondaryReleasePreview = ExtResource("5_f1ek2")
+SecondaryReleaseBlast = ExtResource("6_tx1dd")
+SecondaryCooldownBar = NodePath("UI/PlayerUI/FireBallCoolDown")
+HealthBar = NodePath("UI/PlayerUI/HealthBar")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1626135417 groups=["Camera3D"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+
+[node name="FireStunCast" type="RayCast3D" parent="Camera3D" unique_id=42415312]
+target_position = Vector3(0, 0, -20)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=124289789]
 shape = SubResource("CylinderShape3D_gpseo")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1626135417]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
-
-[node name="FireStunCast" type="RayCast3D" parent="Camera3D" unique_id=42415312]
-target_position = Vector3(0, 0, -10)
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=184877433]
+visible = false
 mesh = SubResource("CylinderMesh_gpseo")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1851636123]
@@ -93,60 +74,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="BarContainer" type="VBoxContainer" parent="UI/PlayerUI" unique_id=2057848489]
-layout_mode = 1
-offset_left = 3.0
-offset_top = 2.0
-offset_right = 35.0
-offset_bottom = 67.0
-scale = Vector2(2, 2)
-theme_override_constants/separation = 1
-alignment = 1
-
-[node name="HeartBar" type="TextureRect" parent="UI/PlayerUI/BarContainer" unique_id=2130265414]
-z_as_relative = false
-texture_filter = 1
-layout_mode = 2
-texture = ExtResource("2_6t5aa")
-
-[node name="HeartProgressBar" type="ProgressBar" parent="UI/PlayerUI/BarContainer/HeartBar" unique_id=699729378]
-z_index = -1
-z_as_relative = false
-texture_filter = 1
-layout_mode = 0
-offset_left = 19.5
-offset_top = 10.0
-offset_right = 137.5
-offset_bottom = 37.0
-scale = Vector2(1, 0.6999998)
-theme_override_styles/background = SubResource("StyleBoxFlat_cvnsp")
-theme_override_styles/fill = SubResource("StyleBoxFlat_vgqql")
-step = 1.0
-value = 100.0
-show_percentage = false
-
-[node name="ManaBar" type="TextureRect" parent="UI/PlayerUI/BarContainer" unique_id=1806666626]
-z_as_relative = false
-texture_filter = 1
-layout_mode = 2
-texture = ExtResource("2_cvnsp")
-
-[node name="ManaProgressBar" type="ProgressBar" parent="UI/PlayerUI/BarContainer/ManaBar" unique_id=358930927]
-z_index = -1
-z_as_relative = false
-texture_filter = 1
-layout_mode = 0
-offset_left = 19.5
-offset_top = 10.0
-offset_right = 137.5
-offset_bottom = 37.0
-scale = Vector2(1, 0.6999998)
-theme_override_styles/background = SubResource("StyleBoxFlat_cvnsp")
-theme_override_styles/fill = SubResource("StyleBoxFlat_6t5aa")
-step = 1.0
-value = 100.0
-show_percentage = false
 
 [node name="CenterContainer" type="CenterContainer" parent="UI/PlayerUI" unique_id=1767548312]
 layout_mode = 1
@@ -160,3 +87,115 @@ grow_vertical = 2
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("4_vgqql")
+
+[node name="ManaBar" type="TextureProgressBar" parent="UI/PlayerUI" unique_id=447115536]
+texture_filter = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+max_value = 10.0
+value = 9.0
+texture_under = ExtResource("8_8erm5")
+texture_progress = ExtResource("9_tx1dd")
+
+[node name="HealthBar" type="TextureProgressBar" parent="UI/PlayerUI" unique_id=1314394823]
+texture_filter = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_progress = ExtResource("10_gymyn")
+
+[node name="level" type="Label" parent="UI/PlayerUI" unique_id=1256176114]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 12.0
+offset_right = 51.0
+offset_bottom = 51.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("11_gymyn")
+theme_override_font_sizes/font_size = 30
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FireCoolDown" type="TextureProgressBar" parent="UI/PlayerUI" unique_id=2023934585]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 281.0
+offset_right = 568.0
+offset_bottom = 409.0
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.6, 0.6)
+value = 1.0
+fill_mode = 3
+texture_under = ExtResource("12_ukyrk")
+texture_progress = ExtResource("12_ukyrk")
+tint_under = Color(0.10747976, 0.10747973, 0.10747973, 1)
+
+[node name="E" type="Label" parent="UI/PlayerUI/FireCoolDown" unique_id=1549507640]
+layout_mode = 0
+offset_left = 19.0
+offset_top = -8.0
+offset_right = 67.0
+offset_bottom = 47.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("11_gymyn")
+theme_override_font_sizes/font_size = 30
+text = "E"
+vertical_alignment = 2
+
+[node name="FireBallCoolDown" type="TextureProgressBar" parent="UI/PlayerUI" unique_id=996808863]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 316.0
+offset_right = 640.0
+offset_bottom = 444.0
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.6, 0.6)
+value = 1.0
+fill_mode = 3
+texture_under = ExtResource("13_7dp3o")
+texture_progress = ExtResource("13_7dp3o")
+tint_under = Color(0.10747976, 0.10747973, 0.10747973, 1)
+
+[node name="E" type="Label" parent="UI/PlayerUI/FireBallCoolDown" unique_id=2094032962]
+layout_mode = 0
+offset_left = 19.0
+offset_top = -8.0
+offset_right = 67.0
+offset_bottom = 47.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("11_gymyn")
+theme_override_font_sizes/font_size = 30
+text = "Q"
+vertical_alignment = 2
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=623294794]
+light_energy = 2.0
+light_volumetric_fog_energy = 0.3
+shadow_enabled = true
+omni_range = 23.605228
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=909231912]
+texture_filter = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -128.0
+offset_right = 128.0
+grow_vertical = 0
+scale = Vector2(2.5, 2.5)
+pivot_offset = Vector2(0, 128.4)
+texture = ExtResource("14_7dp3o")
+
+[node name="Walk" type="AudioStreamPlayer3D" parent="." unique_id=2020079270]
+stream = ExtResource("15_igrcy")
+
+[node name="Fireball" type="AudioStreamPlayer3D" parent="." unique_id=619511562]
+stream = ExtResource("16_fs7ks")
+
+[node name="Fire" type="AudioStreamPlayer3D" parent="." unique_id=320010481]
+stream = ExtResource("17_l6n3p")
+
+[node name="explosion" type="AudioStreamPlayer3D" parent="." unique_id=920481686]
+stream = ExtResource("18_olqyp")

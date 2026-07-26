@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://cp4it05egl7wq"]
+
+[ext_resource type="Script" uid="uid://clagdx6siket2" path="res://Scripts/skull_enemy.gd" id="1_4bu6p"]
+[ext_resource type="PackedScene" uid="uid://bm6p3o617nh8t" path="res://Scenes/attack_0.tscn" id="2_15hii"]
+[ext_resource type="Texture2D" uid="uid://y8do8xjsniv3" path="res://Imports/art/skull attackingl.png" id="3_acvlw"]
+[ext_resource type="Texture2D" uid="uid://beff8besuqicp" path="res://Imports/art/skulll.png" id="4_dfsi8"]
+[ext_resource type="AudioStream" uid="uid://cjoys5fy822si" path="res://Imports/sounds/skill- agroo.mp3" id="5_c43u6"]
+[ext_resource type="AudioStream" uid="uid://bk12ok1ue84rh" path="res://Imports/sounds/skull-dying.mp3" id="6_eckcw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_15hii"]
+size = Vector3(3.803894, 5.5821533, 4.9765167)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c43u6"]
+atlas = ExtResource("3_acvlw")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtkq8"]
+atlas = ExtResource("4_dfsi8")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eckcw"]
+atlas = ExtResource("4_dfsi8")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1abm"]
+atlas = ExtResource("4_dfsi8")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cot7d"]
+atlas = ExtResource("4_dfsi8")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gpseo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c43u6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jtkq8")
+}],
+"loop": 0,
+"name": &"Attack",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eckcw")
+}],
+"loop": 1,
+"name": &"Back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jtkq8")
+}],
+"loop": 1,
+"name": &"Front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m1abm")
+}],
+"loop": 1,
+"name": &"Left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cot7d")
+}],
+"loop": 1,
+"name": &"Right",
+"speed": 5.0
+}]
+
+[node name="SkullEnemy" type="CharacterBody3D" unique_id=956963099 node_paths=PackedStringArray("MouthMarker", "AggroSound", "DeathSound") groups=["Enemy"]]
+script = ExtResource("1_4bu6p")
+MouthMarker = NodePath("Mouth")
+AggroSound = NodePath("Agro")
+DeathSound = NodePath("Death")
+EnemyProjectile = ExtResource("2_15hii")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1265511198]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.020420074, -0.0065910816, -0.1235733)
+shape = SubResource("BoxShape3D_15hii")
+debug_color = Color(0.9354962, 0.2555141, 3.85046e-07, 0.41960785)
+
+[node name="Sprite" type="AnimatedSprite3D" parent="." unique_id=1722697775]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.17150497, 0)
+pixel_size = 0.05
+billboard = 2
+shaded = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_gpseo")
+animation = &"Attack"
+frame = 1
+frame_progress = 1.0
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=555950785]
+path_desired_distance = 0.5
+
+[node name="Mouth" type="Marker3D" parent="." unique_id=202252804]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.437, 0)
+
+[node name="Agro" type="AudioStreamPlayer3D" parent="." unique_id=1589432939]
+stream = ExtResource("5_c43u6")
+
+[node name="Death" type="AudioStreamPlayer3D" parent="." unique_id=19271013]
+stream = ExtResource("6_eckcw")

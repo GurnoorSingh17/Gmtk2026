@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cp26mpt70upgk"
+path="res://.godot/imported/forest- early abmience.mp3-de363fd1809558806f737caa2081acbe.mp3str"
+
+[deps]
+
+source_file="res://Imports/sounds/forest- early abmience.mp3"
+dest_files=["res://.godot/imported/forest- early abmience.mp3-de363fd1809558806f737caa2081acbe.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

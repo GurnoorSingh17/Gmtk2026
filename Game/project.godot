@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="gmtk2026"
-run/main_scene="uid://ca83kygyb5u1f"
+run/main_scene="uid://lroibhdnwi5o"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameManager="*uid://drou2s0m4y6rs"
 
 [display]
 
@@ -26,6 +30,9 @@ window/stretch/mode="canvas_items"
 
 Player=""
 PlayerProjectile=""
+Camera3D=""
+Enemy=""
+EnemyProjectile=""
 
 [input]
 
