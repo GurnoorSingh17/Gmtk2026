@@ -11,21 +11,14 @@
             "id": "b2330bc8a14cd44f",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "markdown",
               "state": {
-                "file": "Notes/Base.md",
-                "kanbanViewState": {
-                  "kanban-plugin": "board",
-                  "list-collapse": [
-                    false,
-                    false,
-                    false,
-                    false
-                  ]
-                }
+                "file": "Notes/Basic Combat System.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-trello",
-              "title": "Base"
+              "icon": "lucide-file",
+              "title": "Basic Combat System"
             }
           }
         ]
@@ -48,7 +41,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -206,6 +201,9 @@
   },
   "active": "b2330bc8a14cd44f",
   "lastOpenFiles": [
+    "Notes/Movement.md",
+    "Game/icon.svg",
+    "Notes/Base.md",
     "Game/Scenes/player.tscn-s2s5fa",
     "Game/Scenes/player.tscn-fszvzO",
     "Game/Scenes/attack_2.tscn-ACFY75",
@@ -216,15 +214,11 @@
     "Game/Scenes/attack_2_preview.tscn-4C91Ji",
     "Game/Scenes/attack_2_preview.tscn-toVmhP",
     "Game/Scenes/attack_2_preview.tscn-GkwSvf",
-    "Game/Scenes/attack_2.tscn-o1IELk",
     "Notes/Basic Combat System.md",
-    "Notes/Base.md",
     "Game/Imports/UI/Crosshair.png",
-    "Notes/Movement.md",
     "Game/Imports/UI/Heart.png",
     "Game/Imports/UI/mana bottle.png",
     "Notes/Test Enemy.md",
-    "README.md",
-    "Game/icon.svg"
+    "README.md"
   ]
 }
